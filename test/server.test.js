@@ -1,7 +1,7 @@
 // test/server.test.js
 import request from 'supertest';
 import { expect } from 'chai';  // Use import instead of require
-import server from '../server.js';
+import server from '../index.js';
 
 describe('GET /', () => {
   it('should return Hello World message', (done) => {

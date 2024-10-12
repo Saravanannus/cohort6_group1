@@ -1,5 +1,5 @@
 {
-  "name": "cohort_group6",
+  "name": "cohort6_group1",
   "version": "1.0.0",
   "description": "A simple Express server",
   "main": "server.js",
@@ -15,5 +15,10 @@
     "chai": "^5.1.1",
     "mocha": "^10.7.3",
     "supertest": "^7.0.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC"
 }
