@@ -1,11 +1,19 @@
 {
-  "name": "cohort6_group1",
+  "name": "capstoneproject-group1",
   "version": "1.0.0",
-  "description": "![alt text](image.png)",
-  "main": "index.js",
+  "description": "A simple Express server",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "mocha --exit"
   },
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3",
+    "supertest": "^7.0.0"
+  }
 }
