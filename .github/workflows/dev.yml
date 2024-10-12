@@ -68,6 +68,6 @@ jobs:
       - name: Update ECS service
         run: |
           aws ecs update-service \
-            --cluster ce6-capstoneproject-group1 \
+            --cluster ce6-cohort6_group1 \
             --service dev \
             --force-new-deployment
