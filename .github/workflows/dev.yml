@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - dev
-      
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -46,6 +46,10 @@ jobs:
         env:
           AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
         run: |
+          if [ -z "$AWS_ACCOUNT_ID" ]; then
+            echo "AWS_ACCOUNT_ID is not set!"
+            exit 1
+          fi
           aws ecr get-login-password --region ap-southeast-1 | \
           docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.ap-southeast-1.amazonaws.com
 
@@ -70,6 +74,6 @@ jobs:
       - name: Update ECS service
         run: |
           aws ecs update-service \
-            --cluster cohort6_group1 \
+            --cluster ce6-cohort6_group1 \
             --service dev \
             --force-new-deployment
