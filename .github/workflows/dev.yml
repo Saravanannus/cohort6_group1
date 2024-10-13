@@ -29,7 +29,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -59,7 +58,7 @@ jobs:
           docker buildx build --platform linux/amd64,linux/arm64 \
           -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-1.amazonaws.com/Saravanan/cohort6_group1:dev \
           --push .
-  
+
   deploy:
     needs: dockerize
     runs-on: ubuntu-latest
