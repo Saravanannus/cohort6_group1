@@ -53,21 +53,12 @@ jobs:
           aws ecr get-login-password --region ap-southeast-1 | \
           docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.ap-southeast-1.amazonaws.com
 
-      # - name: Build and push Docker image for both amd64 and arm64
-      #   run: |
-      #     docker buildx build --platform linux/amd64,linux/arm64 \
-      #     -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-1.amazonaws.com/Saravanan/cohort6_group1:dev \
-      #     --push .
       - name: Build and push Docker image for both amd64 and arm64
-      env:
-        ECR_REGISTRY: "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-1.amazonaws.com"
-        IMAGE_NAME: "Saravanan/cohort6_group1"
-        IMAGE_TAG: "dev"
-      run: |
-        docker buildx build --platform linux/amd64,linux/arm64 \
-          -t $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG \
-          -t $ECR_REGISTRY/$IMAGE_NAME:latest \
+        run: |
+          docker buildx build --platform linux/amd64,linux/arm64 \
+          -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-1.amazonaws.com/Saravanan/cohort6_group1:dev \
           --push .
+  
   deploy:
     needs: dockerize
     runs-on: ubuntu-latest
